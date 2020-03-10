@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* !important>inline-style>id>class>tag>* */
+        p {
+            /* 全體P */
+            color: red;
+        }
+
+        #vivi {
+            color: yellowgreen;
+        }
+
+        #vivian {
+            color: green;
+        }
+
+        .info {
+            color: black;
+        }
+
+        span {
+            color: chartreuse;
+        }
+        p span {
+            color:gainsboro;
+        }
+        
+        div.info {
+            color: darkmagenta;
+        }
+
+        .cs {
+            /* 會覆蓋前面的.info設定後面優先 */
+            color: darkseagreen;
+        }
+        *{
+            color: teal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 個別P -->
+    <p style="color: red;font-size: 20px;background-color: grey;text-decoration: underline;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, voluptates nulla ipsa beatae eveniet
+        incidunt ullam quam vitae dolores quis nihil molestiae totam tempora a officia porro esse, hic et?
+    </p>
+    <p class="info cs" id="vivi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolore, pariatur
+        quas perferendis eos nostrum
+        consectetur est atque veritatis numquam quaerat nihil nemo aut minima, sit, nisi harum molestiae modi.</p>
+    <p id="vivian">Non aut rem consequatur eum eligendi ratione nostrum earum delectus maxime blanditiis? Sed, quaerat
+        itaque!
+        Tempora unde maxime consectetur! Deserunt asperiores inventore dolorum molestiae. Doloremque vero a magni
+        expedita consectetur.</p>
+    <div class=" info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. <span>Sit
+            sequi quod veniam</span> aperiam dolor? Rerum labore temporibus consequatur facilis ullam commodi animi ad
+        hic reprehenderit, minus architecto aut, illum nam.</div>
+    <br>
+    <div>Harum dolore unde autem reprehenderit neque laboriosam facere commodi ab, l<span>aborum suscipit
+            earem</span>, sunt odio optio aspernatur libero explicabo fugit, delectus culpa velit voluptatibus quam?
+        Expedita doloremque perspiciatis ullam?</div>
+    <br>
+    <p>Maxime veritatis, reprehenderit id sapiente <span>dolorum quae ducimus</span> laboriosam harum
+        nesciuntvoluptatum dolorem rerum fuga distinctio et iure ea veniam aut deleniti nihil aspernatur? Cupiditate
+        ipsamratione asperiores vitae aspernatur.</p>
+</body>
+
+
+</html>
