@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            width: 960px;
+            height: 700px;
+            margin: auto;
+            display: flex;
+            /* item大於一定的寬度才會換行 */
+            flex-wrap: wrap;
+            background-color: #ccc;
+            /* 直排往下換行，大部分都是往右 */
+            /* flex-direction: column; */
+        }
+
+        .item {
+            width: 250px;
+            height: 200px;
+            background-color: #999999;
+            margin: 10px;
+            font-style: 30px;
+            /* 超過會自動收縮 */
+            /* flex-shrink: 0; */
+        }
+    </style>
+</head>
+<!-- <body dir="rtl">由右至左幾乎用不太到 -->
+
+<body>
+    <div class="flex">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+
+</html>
