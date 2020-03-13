@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+        }
+        h1 {
+            position: relative;
+            margin: 10px;
+            padding-left: 10px;
+        }
+
+        h1::after {
+            content: '';
+            width: 4px;
+            background-color: #f00;
+
+            display: block;
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis provident molestiae illo voluptatibus
+            eaque eveniet ab corrupti quam earum quae nam omnis ipsum doloribus, aut, nisi dolore quos sequi iste!</p>
+    </div>
+
+</body>
+
+</html>
