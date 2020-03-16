@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 0px;
+            height: 0px;
+            border-top: 30px solid transparent;
+            /* border-right: 30px solid green; */
+            border-bottom: 30px solid transparent;
+            border-left: 30px solid gray;
+        }
+
+        .b {
+            width: 0px;
+            height: 0px;
+            border-top: 40px solid green;
+            border-right: 40px solid transparent;
+
+        }
+
+        .c {
+            width: 0px;
+            height: 0px;
+            border-bottom: 40px solid transparent;
+            border-left: 40px solid gray;
+
+        }
+
+        .sample1 {
+            margin: 100px;
+            width: 40px;
+            height: 40px;
+            background-color: #f00;
+            position: relative;
+        }
+
+        .sample1::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 20px solid #f00;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            position: absolute;
+            top:100%;
+        }
+
+        .sample2 {
+            margin: 100px;
+            width: 40px;
+            height: 40px;
+            background-color: #f00;
+            position: relative;
+        }
+
+        .sample2::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid transparent;
+            border-left: 20px solid #f00;
+            border-right: 20px solid #f00;
+            position: absolute;
+            top: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a"></div>
+    <br>
+    <div class="b"></div>
+    <br>
+    <div class="c"></div>
+    <br>
+    <div class="sample1"></div>
+    <br>
+    <div class="sample2"></div>
+</body>
+
+</html>
