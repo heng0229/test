@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: '>';
+        }
+        
+        .breadcrumb a {
+            color: #fa0;
+        }
+        
+        .breadcrumb-item.active,
+        .breadcrumb-item.active:hover {
+            color: #afa;
+        }
+        
+        .list-group-item.active {
+            background-color: #333;
+            border-color: #333;
+        }
+        
+        .list-group-item-action:focus,
+        .list-group-item-action:hover {
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav order-last">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 m-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        Cras justo odio
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+                </div>
+            </div>
+            <div class="col-8">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente rerum aperiam, veritatis sunt aliquam molestiae omnis esse voluptatibus ullam aut autem explicabo magni animi, non voluptates! Quae, fugit. Debitis delectus incidunt repellendus.
+                    Illo at id harum voluptate libero! Rem quae in vero numquam fuga ab dignissimos similique commodi fugit animi!</p>
+                <p>Neque consequuntur aperiam impedit atque laborum excepturi accusantium dicta a dolor aut aspernatur officiis quos numquam at fugit inventore vel perspiciatis accusamus nihil doloremque nostrum, recusandae illo? Facilis, doloremque. Dicta
+                    doloremque nihil ipsa praesentium ut saepe unde cupiditate quae, dolor impedit est illo aspernatur atque, totam iste, odit repudiandae facilis!</p>
+                <p>Excepturi nostrum fugiat suscipit est, mollitia voluptatibus doloribus voluptatum sint et. Id omnis possimus consectetur repellat delectus temporibus incidunt doloremque mollitia beatae libero animi, quod suscipit nihil accusantium cupiditate
+                    eligendi tempora maxime voluptates, asperiores, quibusdam fuga laudantium! Numquam vero enim fuga, aspernatur iste tempora expedita voluptas repudiandae illum praesentium quo.</p>
+                <p>Omnis similique placeat deleniti ad error iusto delectus incidunt voluptatibus? Minus facere neque harum temporibus iusto sed vel dolores unde rem? Neque quibusdam molestiae dolor, numquam ducimus exercitationem! Magnam voluptas eos odio,
+                    nostrum placeat voluptatibus doloremque saepe iste delectus a neque pariatur perspiciatis quasi labore aliquid itaque vitae laudantium impedit.</p>
+                <p>Repudiandae cumque neque mollitia, quisquam quaerat fuga accusantium itaque delectus sit ullam numquam voluptas, omnis perspiciatis aspernatur exercitationem, tempore vero molestiae quibusdam. Optio soluta tempora sequi? Assumenda dolores,
+                    laborum debitis eligendi, quasi iusto tenetur in vitae vero et accusantium commodi minus itaque perferendis voluptas sint accusamus consectetur aliquam iste? Incidunt?</p>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
