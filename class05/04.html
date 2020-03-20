@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .wrap {
+            width: 100%;
+            margin: auto;
+            display: flex;
+        }
+        
+        .col {
+            width: 50%;
+            position: relative;
+        }
+        
+        .mv {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        
+        .mv iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        
+        .txt {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #ff0;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <!-- 1120 -->
+        <div class="col">
+            <!-- 560 -->
+            <div class="mv">
+                <!-- 560=100%父層寬，560/600*100等於padding-bottom -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/0AwqGawLjKU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col">
+            <div class="txt">
+                <h2>title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, perferendis.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
