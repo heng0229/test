@@ -35,16 +35,4 @@
     .col-md-12 {
         width: 100%;
     }
-    .history div [class*='col']:first-child {
-        order: 1;
-    }
-    .service .item {
-        display: flex;
-    }
-    .service .item .pic {
-        width: 30%;
-    }
-    .service .item .txt {
-        width: 70%;
-    }
 }

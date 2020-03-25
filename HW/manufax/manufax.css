@@ -8,11 +8,15 @@ img {
     vertical-align: middle;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
-    /* max-width: 1300px; */
+    max-width: 1300px;
     margin: auto;
-    background-color: #ccc;
+    background-color: #f6f6f7;
     margin-bottom: 50px;
 }
 
@@ -22,6 +26,7 @@ img {
 }
 
 div[class*='col-'] {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding-left: 15px;
     padding-right: 15px;
@@ -76,18 +81,103 @@ div[class*='col-'] {
     width: 100%;
 }
 
-.main .container .info {
-    width: 100%;
-    height: 50px;
-    font-size: 24px;
-    color: #ccc;
-    display: flex;
-    background-color: #333;
-    position: absolute;
-}
-
 .item img {
     width: 100%;
+}
+
+.main .container .info {
+    width: 100%;
+    font-size: 24px;
+    color: #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #333;
+    z-index: 1;
+}
+
+.main .pict img {
+    width: 258px;
+    height: 70px;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 25px;
+}
+
+.logo .main .pic {
+    position: relative;
+    z-index: 0;
+}
+
+.title {
+    height: 100%;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+.title h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 110px;
+    font-weight: 700;
+    line-height: 146px;
+    letter-spacing: 5.6px;
+    padding: 100px 0px 15px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.title p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.2px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.titlea {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    padding: 22px 38px 22px 39px;
+    margin: 0px 0px 0px 0px;
+    /* width: 285px; */
+    background-color: #2ac5f4;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titlea:hover {
+    background-color: #3b3d42;
+}
+
+.bgpic {
+    width: 100%;
+    padding-bottom: 30%;
+    background-image: url('../manufax/manufaxp/asset\ 1.png');
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    /* top: -60px; */
+    z-index: 0;
 }
 
 .main .pic img {
@@ -97,6 +187,18 @@ div[class*='col-'] {
 
 .main .container {
     max-width: 100%;
+}
+
+.service .item .txt {
+    text-align: center;
+}
+
+.history .row {
+    margin: auto;
+}
+
+.history .txt {
+    padding: 30px;
 }
 
 .album .container {
@@ -110,8 +212,11 @@ div[class*='col-'] {
 }
 
 .album .item img {
-    position: relative;
     height: 358px;
+}
+
+.album .item .img {
+    position: relative;
 }
 
 .album .item .txt {
@@ -121,11 +226,67 @@ div[class*='col-'] {
     font-weight: 400;
     /* color: #ffffff; */
     position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    color: #fff;
+}
+
+.news .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.news .item {
+    margin-bottom: 100px;
+}
+
+.btn::before {
+    content: '';
+}
+
+.btn {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 37px;
+    background-color: #2ac5f4;
+    color: #ffffff;
+    text-align: center;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #2ac5f4;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.btn:hover {
+    background-color: #3b3d42;
+    border-color: #3b3d42;
 }
 
 .li .container {
+    /* height: 608x; */
     max-width: 100%;
-    height: 610px;
     background-color: #333;
     margin-bottom: 0;
+    padding: 100px;
+}
+
+.li .item {
+    color: #fff;
+}
+
+.li .item a {
+    color: #fff;
+}
+
+.li .item p {
+    color: #888888;
+    font-family: "Lato", Sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0px;
 }
