@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .col-3 {
+            flex-basis: 0;
+            flex-grow: 1;
+            padding: 0 15px;
+            width: 0;
+            background-color: pink;
+            box-sizing: border-box;
+        }
+        
+        .item {
+            height: 100%;
+            outline: ipx solid blue;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            background-color: #ccc;
+            margin-top: auto;
+            align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://picsum.photos/200/200?random=1" alt="">
+                    <h2>title</h2>
+                    <button>123</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://picsum.photos/200/200?random=1" alt="">
+                    <h2>title</h2>
+                    <button>123</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://picsum.photos/200/200?random=1" alt="">
+                    <h2>title title title title title title title </h2>
+                    <button>123</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://picsum.photos/200/200?random=1" alt="">
+                    <h2>title</h2>
+                    <button>123</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
