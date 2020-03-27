@@ -143,6 +143,7 @@ img {
 }
 
 .con1 .find {
+    display: flex;
     justify-content: center;
 }
 
