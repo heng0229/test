@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //iPhone, iPad, Mac, Watch
+        var products = {
+            iphone: {
+                p01:{ id:'p01', color:'紅',  price:'25000', storage:'64G', network:'Wifi', pic:'p01', url:'#'  },
+                p02:{ id:'p02', color:'藍', price:'27000', storage:'128G', network:'Wifi', pic:'p02', url:'#'  },
+                p03:{ id:'p03', color:'黃', price:'28000', storage:'256G', network:'Wifi', pic:'p03', url:'#'  }
+             },
+            ipad: {},
+            mac: {},
+            watch: {}
+        };
+
+
+        var p01=products.iphone.p01;
+        console.log(p01.id + ', ' + p01.color + ', ' + p01.price + ', ' + p01.storage + ', ' + p01.network + ',' + p01.pic + ',' + p01.url );
+
+    </script>
+</body>
+
+</html>

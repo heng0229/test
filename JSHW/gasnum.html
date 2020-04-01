@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .num {
+            width: 960px;
+            font-size: 50px;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="num m-auto p-5 text-center border border-dark">
+                <label id="min">0</label>
+                <label class="">~</label>
+                <label id="max">100</label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row d-flex flex-column justify-content-center align-items-center">
+            <button type="button" class="btn btn-primary" onclick="getRandomInt()">產生數字</button>
+            <input type="text" class="" id="input">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="m-auto">
+                <tr>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">1</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">2</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">3</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">4</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">5</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">6</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">7</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">8</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">9</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-dark btn_x" onclick="">X</button></td>
+                    <td><button class="btn btn-dark btn_num" onclick="GetNum(this)">0</button></td>
+                    <td><button class="btn btn-dark btn_v" onclick="cleaninput()">V</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        var gas = 0;
+        function getRandomInt() {
+            gas = Math.floor(Math.random() * 99 + 1);
+            return gas;
+        }
+        console.log(gas);
+
+        var btn = document.getElementsByClassName('btn_num');
+        var input = document.getElementById('input');
+        for (let i = 0; i < btn.length; i++) {
+            const element = btn[i];
+            element.addEventListener('click', function () {
+                input.value += `${GetNum(this)}`;
+            })
+        }
+        var btn_x = document.querySelector('.btn_x');
+        btn_x.addEventListener('click', function () {
+            input.value = '';
+        })
+        var btn_v = document.querySelector('.btn_v');
+        var min = document.getElementById('min');
+        var max = document.getElementById('max');
+        // btn_v.addEventListener('click', function () {
+        //     min.innerText = 0;   
+        //     max.innerText = 100;
+        // })
+
+        function GetNum(item) {
+            return item.innerText;
+        }
+        function cleaninput() {
+            let maxn = parseInt(max.innerText);
+            let minn = parseInt(min.innerText);
+            if (input.value > gas && input.value < maxn) {
+                max.innerText = input.value;
+                input.value='';
+            }
+            else if (input.value < gas && input.value > minn) {
+                min.innerText = input.value;
+                input.value='';
+            }
+            else if (input.value == gas) {
+                alert("恭喜猜對");
+            }
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
