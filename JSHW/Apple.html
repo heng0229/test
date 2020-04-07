@@ -5,28 +5,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .title a{
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        .title a:hover {
+            color: #000;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="m-auto p-3">
+                <nav class="title">
+                    <a id="btn_iphone" onclick="setProduct(this.innerText)" href="#">iphone</a>
+                    <a id="btn_ipad" onclick="setProduct(this.innerText)" href="#">ipad</a>
+                    <a id="btn_mac" onclick="setProduct(this.innerText)" href="#">mac</a>
+                    <a id="btn_watch" onclick="setProduct(this.innerText)" href="#">watch</a>
+                </nav>
+
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-6 col-sm-12">
+                <img id="product-img" src="" class="img-fluid " alt="">
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div id="color">
+                </div>
+                <div id="type">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         //iPhone, iPad, Mac, Watch
         var products = {
             iphone: {
-                p01:{ id:'p01', color:'紅',  price:'25000', storage:'64G', network:'Wifi', pic:'p01', url:'#'  },
-                p02:{ id:'p02', color:'藍', price:'27000', storage:'128G', network:'Wifi', pic:'p02', url:'#'  },
-                p03:{ id:'p03', color:'黃', price:'28000', storage:'256G', network:'Wifi', pic:'p03', url:'#'  }
-             },
-            ipad: {},
-            mac: {},
-            watch: {}
+                group: { id: 'iphone11', group_img: './applep/iphone11-select-2019-family.jpg' },
+                product: [{ color: 'red', colorValue: '#ff0000', imageUrl: './applep/iphone11-red-select-2019.png' },
+                { color: 'green', colorValue: '#008000', imageUrl: './applep/iphone11-green-select-2019.png' },
+                { color: 'purple', colorValue: '#800080', imageUrl: './applep/iphone11-purple-select-2019.png' },
+                { color: 'white', colorValue: '#ffffff', imageUrl: './applep/iphone11-white-select-2019.png' },
+                { color: 'yellow', colorValue: '#ffff00', imageUrl: './applep/iphone11-yellow-select-2019.png' },
+                { color: 'black', colorValue: '#000000', imageUrl: './applep/iphone11-black-select-2019.png' }],
+                Spec: [{ size: '64GB', fit: 24900 },
+                { size: '128GB', fit: 26900 },
+                { size: '256GB', fit: 30400 }]
+            },
+            ipad: {
+                group: { id: 'ipad', group_img: './applep/ipad-hero-unselected-201909_GEO_TW.jpg' },
+                product: [{ color: 'space-gray', colorValue: '#808080', imageUrl: './applep/ipad-wifi-select-space-201909_GEO_TW.png' },
+                { color: 'silver', colorValue: '#c0c0c0', imageUrl: './applep/ipad-wifi-select-silver-201909_GEO_TW.png' },
+                { color: 'gold', colorValue: '#FFB6C1', imageUrl: './applep/ipad-wifi-select-gold-201909_GEO_TW.png' }],
+                Spec: [{ size: '32GB', fit: 10900 },
+                { size: '128GB', fit: 13900 }]
+            },
+            mac: {
+                group: { id: 'watch', group_img: './applep/MacBook-Air.jpg' },
+                product: [{ color: 'space-gray', colorValue: '#808080', imageUrl: './applep/macbook-air-space-gray-select-201810.jpg' },
+                { color: 'silver', colorValue: '#c0c0c0', imageUrl: './applep/macbook-air-silver-select-201810.jpg' },
+                { color: 'gold', colorValue: '#FFB6C1', imageUrl: './applep/macbook-air-gold-select-201810.jpg' }],
+                Spec: [{ size: '1.1GHz 雙核心 Core i3 處理器，Turbo Boost 最高可達 3.2GHz 256GB 儲存空間Touch ID', fit: 31900 },
+                { size: '1.1GHz 4 核心 Core i5 處理器，Turbo Boost 最高可達 3.5GHz 512GB 儲存空間Touch ID', fit: 41900 }]
+            },
+            watch: {
+                group: { id: 'watch', group_img: './applep/apple-watch-s4.jpg' },
+                product: [{ color: 'space-gray', colorValue: '#808080', imageUrl: './applep/watch-alum-spacegray.jpg' },
+                { color: 'silver', colorValue: '#c0c0c0', imageUrl: './applep/watch-alum-silver.jpg' },
+                { color: 'gold', colorValue: '#FFB6C1', imageUrl: './applep/watch-alum-gold.jpg' }],
+                Spec: [{ size: '運動型錶帶', fit: 13400 }]
+            }
         };
+        var iphone = document.getElementById('btn_iphone');
+        var product_img = document.getElementById('product-img');
+        var colorArea = document.getElementById('color');
+        var typeArea = document.getElementById('type');
 
 
-        var p01=products.iphone.p01;
-        console.log(p01.id + ', ' + p01.color + ', ' + p01.price + ', ' + p01.storage + ', ' + p01.network + ',' + p01.pic + ',' + p01.url );
+        function setProduct(product) {
+            product_img.setAttribute('src', products[product].group.group_img);
+            colorArea.innerHTML = '';
+            typeArea.innerHTML = '';
+            let div_color = document.createElement('div');
+            div_color.classList.add('w-100');
+            div_color.classList.add('d-flex');
+            div_color.classList.add('justify-content-center');
+            div_color.classList.add('justify-content-md-start');
+            div_color.style.flexDirection = "column";
+            var div_br = document.createElement('div');
+            div_br.classList.add('w-100');
+            var h1_color = document.createElement('h1');
+            h1_color.style.fontFamily = "微軟正黑體";
+            h1_color.innerHTML = '顏色';
+            colorArea.appendChild(div_color);
+            div_color.appendChild(h1_color);
+            div_color.appendChild(div_br);
+            var div_btn_color = document.createElement('div');
+            div_color.appendChild(div_btn_color);
 
+
+            for (let item of products[product].product) {
+                let btn_color = document.createElement('button');
+                btn_color.classList.add('btn_color');
+                btn_color.setAttribute('urlVal', item.imageUrl);
+                let circle_btn_color = document.createElement('div');
+                let p_btn_color = document.createElement('p');
+                div_btn_color.appendChild(btn_color);
+
+                div_btn_color.style.display = "flex";
+                div_btn_color.style.flexWrap = "wrap";
+                btn_color.style.margin = "5px";
+                btn_color.style.padding = "10px";
+                btn_color.style.border = "1px solid #000000";
+                btn_color.style.backgroundColor = "#F5F6E2";
+                btn_color.style.borderRadius = "5px";
+                btn_color.style.width = "200px";
+                btn_color.style.display = "flex";
+                btn_color.style.flexDirection = "column";
+                btn_color.style.alignItems = "center";
+                btn_color.style.justifyContent = "center";
+                p_btn_color.style.margin = "0px";
+                p_btn_color.style.fontFamily = "微軟正黑體";
+                p_btn_color.style.fontWeight = "bolder";
+                p_btn_color.style.fontSize = "20px";
+                circle_btn_color.style.margin = "0px";
+                circle_btn_color.style.width = "50px";
+                circle_btn_color.style.height = "50px";
+                circle_btn_color.style.backgroundColor = item.colorValue;
+                circle_btn_color.style.borderRadius = "100%";
+                p_btn_color.innerHTML = item.color;
+                btn_color.appendChild(circle_btn_color);
+                btn_color.appendChild(p_btn_color);
+            }
+
+            let colorBtns = document.getElementsByClassName('btn_color');
+            console.log(colorBtns);
+            for (let btn of colorBtns) {
+                btn.addEventListener('click', function () {
+                    console.log(btn);
+                    product_img.setAttribute('src', btn.getAttributeNode('urlVal').value);
+                });
+            }
+
+
+
+            var h1_type = document.createElement('h1');
+            h1_type.innerHTML = '規格';
+            h1_type.style.fontFamily = '微軟正黑體';
+            h1_type.style.margin = "10px";
+            h1_type.style.marginTop = "20px";
+            typeArea.appendChild(h1_type);
+            typeArea.appendChild(div_br);
+            var div_type = document.createElement('div');
+            typeArea.appendChild(div_type);
+
+            for (let type of products[product].Spec) {
+                console.log(type);
+                let btn_type = document.createElement('button');
+                btn_type.classList.add('btn_type');
+                btn_type.setAttribute('fit', type.fit);
+                btn_type.style.fontFamily = '微軟正黑體';
+                btn_type.style.borderRadius = '5px';
+                btn_type.style.width = '410px';
+                btn_type.style.margin = '5px';
+                btn_type.style.padding = '5px';
+                btn_type.style.textAlign = 'left';
+                btn_type.style.border = "1px solid #000000";
+                btn_type.style.backgroundColor = "#F5F6E2";
+                btn_type.style.fontSize = '20px';
+                btn_type.style.fontWeight = 'bolder';
+
+                let storge = document.createElement('p');
+                storge.style.margin = '5px';
+                storge.innerHTML = '規格 : ' + type.size;
+                div_type.appendChild(btn_type);
+                btn_type.appendChild(storge);
+
+            }
+            div_type.appendChild(div_br);
+            var h1_price = document.createElement('h1');
+            h1_price.style.margin = '10px';
+            h1_price.style.fontFamily = '微軟正黑體';
+            h1_price.innerHTML = '價格'
+            div_type.appendChild(h1_price);
+            div_type.appendChild(div_br);
+            var price_cal = document.createElement('h2');
+
+            let priceCal = document.getElementsByClassName('btn_type');
+            console.log(priceCal);
+            for (let price of priceCal) {
+                price.addEventListener('click', function () {
+                    price_cal.innerHTML = '';
+                    console.log(price);
+                    price_cal.innerHTML = 'NT' + price.getAttributeNode('fit').value;
+                    div_type.appendChild(price_cal);
+                    price_cal.style.margin = '10px';
+                });
+            }
+
+        }
     </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
