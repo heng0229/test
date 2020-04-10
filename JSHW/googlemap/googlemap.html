@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+        // var locations = [];
+
+        // let coordinates = [];
+        // let maskLeft = [];
+        // let childMaskLeft = [];
+        let maskArray = [];
+        function initMap() {
+            var chu = { lat: 24.7574023, lng: 120.9523482 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 13, center: chu });
+            $.ajax({
+                type: "get",
+                url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
+                success: function (response) {
+                    console.log(response);
+                    debugger
+                    response.features.forEach((item, index) => {
+
+                        // locations.push({ lat: item['geometry'].coordinates[1], lng: item['geometry'].coordinates[0] });
+
+                        maskArray.push({ coordinates: { lat: item['geometry'].coordinates[1], lng: item['geometry'].coordinates[0] }, name: item['properties'].name, masksLeft: item['properties'].masksLeft, childMasksLeft: item['properties'].childMasksLeft });
+                    });
+                    // maskArray.forEach((item, index) => {
+
+                    //     var marker = new google.maps.Marker({ position: item.coordinates, map: map, icon: "https://img.icons8.com/color/48/000000/smiling.png" });
+                    // });
+                    maskArray.forEach((item, index) => {
+                        if (item.masksLeft > 0 && item.childMasksLeft > 0) {
+
+                            var marker = new google.maps.Marker({ position: item.coordinates, map: map, icon: "https://img.icons8.com/color/48/000000/smiling.png" });
+                        }
+
+                        else {
+
+                            var marker = new google.maps.Marker({ position: item.coordinates, map: map, icon: "https://icon-icons.com/icons2/1648/PNG/48/10058cryingface_110005.png" });
+                        }
+
+                    });
+                }
+            });
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
