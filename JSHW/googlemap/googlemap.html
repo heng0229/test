@@ -42,9 +42,8 @@
                 type: "get",
                 url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
                 success: function (response) {
-                    console.log(response);
-                    debugger
-                    response.features.forEach((item, index) => {
+                   var temp=JSON.parse(response)
+                   temp.features.forEach((item, index) => {
 
                         // locations.push({ lat: item['geometry'].coordinates[1], lng: item['geometry'].coordinates[0] });
 
