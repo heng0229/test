@@ -1,0 +1,183 @@
+</html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>台灣地區區號</title>
+
+    <!-- <script src="./modules/helpers.js"></script> -->
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .table{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="item ">
+                    <h1>台灣地區區號</h1>
+                </div>
+            </div>
+            <div class="col-9">
+                <div id="msg">
+                    <table class="table table-bordered ">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <template id="templateTitle">
+        <tr>
+            <th>縣市</th>
+            <th>鄉/鎮/市/區</th>
+            <th>郵遞區號</th>
+        </tr>
+    </template>
+    <template id="templateData">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <script>
+        function $g(selector) {
+            //判斷是否為id selector
+            if (selector.includes('#') && !selector.includes(' ')) {
+                //回傳Element
+                return document.querySelector(selector);
+            }
+            //回傳Nodelist集合
+            let nodelist = document.querySelectorAll(selector);
+
+            return nodelist.length == 1 ? nodelist[0] : nodelist;
+        }
+
+        function $c(selector) {
+            return document.createElement(selector);
+        }
+
+        var tbody = $g('tbody');
+        let myData = [];
+        let currentData = []
+
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let zipcodeArray = JSON.parse(this.responseText);
+                    zipcodeArray.forEach(item => {
+                        let data = {
+                            City: '',
+                            Districts: []
+                        };
+                        Object.values(item).forEach((x, y) => {
+                            if (typeof x == 'string' && y == 0) {
+                                data.City = x;
+                            }
+                            else if (Array.isArray(x) && y == 2) {
+                                x.forEach((a, b) => {
+                                    let Code = {
+                                        District: '',
+                                        ZipCode: ''
+                                    };
+                                    Object.values(a).forEach((c, d) => {
+                                        if (d == 0) {
+                                            Code.ZipCode = c;
+                                        }
+                                        else if (d == 1) {
+                                            Code.District = c;
+                                        }
+                                    });
+                                    data.Districts.push(Code);
+                                });
+                            }
+                        });
+                        myData.push(data);
+                    });
+                    console.log(myData);
+                    currentData = myData;
+
+                    addtHead();
+                    displayData();
+                }
+            };
+            xhr.open("GET", "http://127.0.0.1:5501/HengLab/JSHW/TaiwanAddress/TaiwanAddress.json");
+            xhr.send();
+        }
+        
+        function addtHead() {
+            let thead = $g('thead');
+            let template = $g('#templateTitle').content.cloneNode(true);
+            thead.appendChild(template);
+        }
+
+        function displayData() {
+            tbody.innerHTML = '';
+            currentData.forEach(x => {
+                addtBody(Object.values(x));
+            });
+        }
+
+        function addtBody(row) {
+            let City = '';
+            row.forEach((item, index) => {
+                if (index == 0) {
+                    City = item;
+                }
+                else if (index == 1) {
+                    Object.values(item).forEach((x, y) => {
+                        let template = $g('#templateData').content.cloneNode(true);
+                        let td = template.querySelectorAll('td');
+
+                        td[0].innerHTML = City;
+                        td[1].innerHTML = x.District;
+                        td[2].innerHTML = x.ZipCode;
+
+                        tbody.appendChild(template);
+                    });
+                }
+            });
+        }
+
+        
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
